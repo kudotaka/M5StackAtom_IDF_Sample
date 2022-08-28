@@ -1,0 +1,23 @@
+menu "M5Stack Atom hardware enable"
+    choice
+        prompt "Set Model"
+        default SOFTWARE_MODEL_ATOM_LITE
+        config SOFTWARE_MODEL_ATOM_LITE
+            bool "MODEL-ATOM LITE"
+        config SOFTWARE_MODEL_ATOM_MATRIX
+            bool "MODEL-ATOM MATRIX"
+    endchoice
+    config SOFTWARE_SK6812_SUPPORT
+        bool "RGB-SK6812"
+        default y
+    config SOFTWARE_BUTTON_SUPPORT
+        bool "BUTTON-Hardware"
+        default y
+    config SOFTWARE_MPU6886_SUPPORT
+        bool "IMU-MPU6886"
+        depends on SOFTWARE_MODEL_ATOM_MATRIX
+        default y
+    config SOFTWARE_EXPPORTS_SUPPORT
+        bool "Expansion Ports A"
+        default y
+endmenu
